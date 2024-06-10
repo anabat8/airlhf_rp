@@ -5,12 +5,14 @@ import torch
 from imitation.algorithms import preference_comparisons
 from imitation.policies import serialize
 from imitation.policies.base import NormalizeFeaturesExtractor
+from imitation.policies.serialize import load_stable_baselines_model
 from imitation.rewards.reward_nets import BasicRewardNet
 from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cpu")
 
 
 class RLHFAgent:
@@ -37,8 +39,10 @@ class RLHFAgent:
         self.pref_comparisons = None
 
     def init_gen_algo(self, policy_name, ac_policy, env_object, lr=0.001, n_steps=32, batch_size=64, n_epochs=20,
-                      gae_lambda=0.8, gamma=0.98, clip_range=0.2, ent_coef=0.0, vf_coef=0.1):
-        if policy_name == "PPO":
+                      gae_lambda=0.8, gamma=0.98, clip_range=0.2, ent_coef=0.0, vf_coef=0.1, path_to_algo=None):
+        if path_to_algo is not None:
+            self.gen_algo = PPO.load(env=env_object.venv, path=path_to_algo)
+        elif policy_name == "ppo":
             self.gen_algo = PPO(
                 policy=ac_policy,
                 env=env_object.venv,
@@ -138,14 +142,3 @@ class RLHFAgent:
             save_path / "gen_policy",
             self.gen_algo,
         )
-
-# rlhfAgent = RLHFAgent()
-# rlhfAgent.init_gen_algo(policy_name="PPO", ac_policy=MlpPolicy)
-# rlhfAgent.init_trajectory_gen()
-# rlhfAgent.train(save_path=pathlib.Path('rlhf_agent'))
-
-# reward_net = th.load("rlhf_agent/reward_net.pt")
-#
-# utils = Utils()
-# utils.train_with_learned_reward(learned_reward=reward_net, save_path="rlhf_agent/rlhf_agent_trained_with_learned_reward")
-# utils.evaluate_trained_agent_with_learned_reward(load_path="rlhf_agent/rlhf_agent_trained_with_learned_reward")

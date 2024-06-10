@@ -13,7 +13,7 @@ class Expert:
         self.demonstrations = None
 
     def init_expert_policy(self):
-        if self.policy_name == "PPO":
+        if self.policy_name == "ppo":
             self.expert_policy = load_policy(
                 "ppo-huggingface",
                 organization="HumanCompatibleAI",

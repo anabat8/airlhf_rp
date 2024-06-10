@@ -12,6 +12,7 @@ import torch as torch
 from experiment3.Expert import Expert
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cpu")
 
 
 class AIRLAgent:
@@ -23,14 +24,14 @@ class AIRLAgent:
             action_space=env_object.venv.action_space,
             normalize_input_layer=RunningNorm,
         ).to(device)
-        self.expert = Expert(env_object, "PPO")
+        self.expert = Expert(env_object, "ppo")
         self.expert_policy = self.expert.init_expert_policy()
         self.expert_demonstrations = self.expert.init_rollouts()
         self.airl_trainer = None
 
     def init_gen_algo(self, ac_policy, env_object, batch_size=64, ent_coef=0.0, lr=0.0005, gamma=0.95, clip_range=0.1,
                       vf_coef=0.1, n_epochs=5):
-        if self.expert.policy_name == "PPO":
+        if self.expert.policy_name == "ppo":
             self.gen_algo = PPO(
                 env=env_object.venv,
                 policy=ac_policy,
@@ -53,10 +54,7 @@ class AIRLAgent:
             n_disc_updates_per_round=n_disc_updates_per_round,
             venv=env_object.venv,
             gen_algo=self.gen_algo,
-            reward_net=self.reward,
-            log_dir="./airl_cartpole_tensorboard",
-            init_tensorboard=True,
-            init_tensorboard_graph=True
+            reward_net=self.reward
         )
 
         env_object.venv.seed(env_object.seed)
@@ -106,11 +104,3 @@ class AIRLAgent:
             save_path / "gen_policy",
             self.airl_trainer.gen_algo,
         )
-
-# airlAgent = AIRLAgent()
-# airlAgent.init_gen_algo(ac_policy=MlpPolicy)
-# airlAgent.train()
-
-# This is how you load rewards / policy
-# reward_net = th.load("airl_agent/airl_learner_rewards.pt")
-# print(np.mean(reward_net))

@@ -11,12 +11,13 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from experiment3.Environment import Environment
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cpu")
 
 
 class Utils:
     @staticmethod
     def train_with_learned_reward(learned_reward, save_path, tensorboard_dir, tb_log_name, wandb_project_name,
-                                  wandb_save_path, ac_policy, env_object, policy_kwargs, policy_name="PPO",
+                                  wandb_save_path, ac_policy, env_object, policy_kwargs, policy_name="ppo",
                                   total_timesteps=400_000, lr=0.001, n_steps=32, batch_size=64, n_epochs=20,
                                   gae_lambda=0.8, gamma=0.98, clip_range=0.2, ent_coef=0.0, vf_coef=0.1):
 
@@ -26,7 +27,7 @@ class Utils:
         # Train an agent with the learned reward
         learner = None
 
-        if policy_name == "PPO":
+        if policy_name == "ppo":
             learner = PPO(
                 policy=ac_policy,
                 env=learned_reward_venv,
@@ -72,9 +73,9 @@ class Utils:
         # run.finish()
 
     @staticmethod
-    def evaluate_trained_agent_with_learned_reward(load_path, venv, policy_name="PPO", n_eval_episodes=100):
+    def evaluate_trained_agent_with_learned_reward(load_path, venv, policy_name="ppo", n_eval_episodes=100):
         learner = None
-        if policy_name == "PPO":
+        if policy_name == "ppo":
             learner = PPO.load(load_path, env=venv)
         reward_mean, reward_std = evaluate_policy(learner.policy, venv, n_eval_episodes)
         reward_stderr = reward_std / np.sqrt(n_eval_episodes)
