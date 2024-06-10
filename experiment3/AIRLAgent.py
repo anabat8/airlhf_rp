@@ -13,6 +13,8 @@ import torch as th
 from experiment3.Environment import Environment
 from experiment3.Expert import Expert
 
+device = th.device("cuda" if th.cuda.is_available() else "cpu")
+
 
 class AIRLAgent:
 
@@ -22,7 +24,7 @@ class AIRLAgent:
             observation_space=env_object.venv.observation_space,
             action_space=env_object.venv.action_space,
             normalize_input_layer=RunningNorm,
-        )
+        ).to(device)
         self.expert = Expert(env_object, "PPO")
         self.expert_policy = self.expert.init_expert_policy()
         self.expert_demonstrations = self.expert.init_rollouts()
@@ -41,7 +43,8 @@ class AIRLAgent:
                 clip_range=clip_range,
                 vf_coef=vf_coef,
                 n_epochs=n_epochs,
-                seed=env_object.seed
+                seed=env_object.seed,
+                device=device
             )
 
     def train(self, env_object, train_steps=400_000, batch_size=2048, buffer_cap=512, n_disc_updates_per_round=16):
@@ -68,6 +71,7 @@ class AIRLAgent:
 
         env_object.venv.seed(env_object.seed)
 
+        # Runs policy for n_eval_episodes episodes, returns a list of rewards and episode lengths per episode
         learner_rewards_after_training, _ = evaluate_policy(
             self.gen_algo, env_object.venv, 100, return_episode_rewards=True
         )
@@ -92,10 +96,14 @@ class AIRLAgent:
         """Save discriminator and generator."""
         # do not serialize the whole trainer (including e.g. expert demonstrations)
         save_path.mkdir(parents=True, exist_ok=True)
+        # Save the learned rewards
         th.save(learner_rewards, save_path / "learner_rewards.pt")
-        th.save(self.airl_trainer._reward_net, save_path / "reward_net.pt")
-        th.save(self.airl_trainer.reward_train, save_path / "reward_train.pt")
+        # reward_train is the same as reward_net
+        # Save the reward model
+        th.save(self.airl_trainer.reward_train, save_path / "reward_net.pt")
+        # Save the unshaped version of reward network used for testing
         th.save(self.airl_trainer.reward_test, save_path / "reward_test.pt")
+        # Save the policy
         serialize.save_stable_model(
             save_path / "gen_policy",
             self.airl_trainer.gen_algo,

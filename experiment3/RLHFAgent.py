@@ -10,8 +10,7 @@ from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-# device = th.device("cuda" if th.cuda.is_available() else "cpu")
-device = th.device("cpu")
+device = th.device("cuda" if th.cuda.is_available() else "cpu")
 
 
 class RLHFAgent:
@@ -68,9 +67,15 @@ class RLHFAgent:
             exploration_frac=exploration_frac,
             rng=env_object.rng, )
 
-    def set_reward_from_airl(self, airl_reward_net):
-        self.reward = airl_reward_net
+    def set_reward_from_airl(self, airl_reward_net, env_object, epochs=10):
+        self.reward = airl_reward_net.to(device)
+        # Update dependent variables
         self.preference_model = preference_comparisons.PreferenceModel(self.reward)
+        self.reward_trainer = preference_comparisons.BasicRewardTrainer(
+            preference_model=self.preference_model,
+            loss=preference_comparisons.CrossEntropyRewardLoss(),
+            epochs=epochs,
+            rng=env_object.rng, )
 
     def train(self, save_path, env_object, num_it=60, fragment_length=100, transition_oversampling=1,
               initial_comp_frac=0.1, initial_epoch_multiplier=4, query_schedule="hyperbolic", total_timesteps=400_000,
@@ -101,6 +106,7 @@ class RLHFAgent:
 
         env_object.venv.seed(env_object.seed)
 
+        # Runs policy for n_eval_episodes episodes, returns a list of rewards and episode lengths per episode
         learner_rewards_after_training, _ = evaluate_policy(
             self.gen_algo, env_object.venv, 100, return_episode_rewards=True
         )
@@ -123,8 +129,11 @@ class RLHFAgent:
 
     def save(self, save_path: pathlib.Path, learner_rewards):
         save_path.mkdir(parents=True, exist_ok=True)
+        # Save the rewards learned
         th.save(learner_rewards, save_path / "learner_rewards.pt")
+        # Save the reward net model
         th.save(self.pref_comparisons.model, save_path / "reward_net.pt")
+        # Save the policy
         serialize.save_stable_model(
             save_path / "gen_policy",
             self.gen_algo,

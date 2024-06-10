@@ -1,15 +1,17 @@
 import numpy as np
 import imageio
+import torch
 
 from imitation.rewards.reward_wrapper import RewardVecEnvWrapper
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 # import wandb as wandb
 # from stable_baselines3.common.monitor import Monitor
-# from stable_baselines3.common.vec_env import VecVideoRecorder
 # from wandb.integration.sb3 import WandbCallback
 
 from experiment3.Environment import Environment
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class Utils:
@@ -21,16 +23,10 @@ class Utils:
 
         # Wrap environment with learned reward
         learned_reward_venv = RewardVecEnvWrapper(env_object.venv, learned_reward.predict_processed)
-        # learned_reward_venv.render(mode="rgb_array")
-        # learned_reward_venv = VecVideoRecorder(
-        #     learned_reward_venv,
-        #     f"videos/{tb_log_name}",
-        #     record_video_trigger=lambda x: x % 2000 == 0,
-        #     video_length=200,
-        # )
 
         # Train an agent with the learned reward
         learner = None
+
         if policy_name == "PPO":
             learner = PPO(
                 policy=ac_policy,
@@ -47,7 +43,8 @@ class Utils:
                 seed=env_object.seed,
                 policy_kwargs=policy_kwargs,
                 tensorboard_log=tensorboard_dir,
-                verbose=1
+                verbose=1,
+                device=device
             )
 
         # Initialize Wandb
@@ -85,40 +82,3 @@ class Utils:
         print(f"Reward: {reward_mean:.0f} +/- {reward_stderr:.0f}")
         return reward_mean, reward_std
 
-    @staticmethod
-    def play_agent(load_path, venv, policy_name="PPO"):
-        model = None
-        if policy_name == "PPO":
-            model = PPO.load(load_path, env=venv)
-        obs = venv.reset()
-        while True:
-            action, _states = model.predict(obs)
-            obs, rewards, dones, info = venv.step(action)
-            venv.render("human")
-            # cv2.waitKey(300)
-            # if np.any(dones):
-            #     if np.any(rewards == 1):
-            #         print(np.where(dones == 1))
-            #         cv2.waitKey(2000)
-            #     else:
-            #         print("lost")
-
-    @staticmethod
-    def make_gif_agent(load_path, venv, policy_name="PPO"):
-        model = None
-        if policy_name == "PPO":
-            model = PPO.load(load_path, env=venv)
-        images = []
-        obs = model.env.reset()
-        img = model.env.render(mode="rgb_array")
-        for i in range(350):
-            images.append(img)
-            action, _ = model.predict(obs)
-            obs, _, _, _ = model.env.step(action)
-            img = model.env.render(mode="rgb_array")
-
-        imageio.mimsave("cartpole_irlhf_agent.gif", [np.array(img) for i, img in enumerate(images) if i % 2 == 0],
-                        fps=29)
-
-# utils = Utils()
-# utils.play_agent(load_path="irlhf_agent/gen_policy/model.zip")
