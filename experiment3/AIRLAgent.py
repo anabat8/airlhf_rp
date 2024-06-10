@@ -6,14 +6,12 @@ from imitation.algorithms.adversarial.airl import AIRL
 from imitation.rewards.reward_nets import BasicShapedRewardNet
 from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
-from stable_baselines3.ppo import MlpPolicy
 from stable_baselines3.common.evaluation import evaluate_policy
-import torch as th
+import torch as torch
 
-from experiment3.Environment import Environment
 from experiment3.Expert import Expert
 
-device = th.device("cuda" if th.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class AIRLAgent:
@@ -97,12 +95,12 @@ class AIRLAgent:
         # do not serialize the whole trainer (including e.g. expert demonstrations)
         save_path.mkdir(parents=True, exist_ok=True)
         # Save the learned rewards
-        th.save(learner_rewards, save_path / "learner_rewards.pt")
+        torch.save(learner_rewards, save_path / "learner_rewards.pt")
         # reward_train is the same as reward_net
         # Save the reward model
-        th.save(self.airl_trainer.reward_train, save_path / "reward_net.pt")
+        torch.save(self.airl_trainer.reward_train, save_path / "reward_net.pt")
         # Save the unshaped version of reward network used for testing
-        th.save(self.airl_trainer.reward_test, save_path / "reward_test.pt")
+        torch.save(self.airl_trainer.reward_test, save_path / "reward_test.pt")
         # Save the policy
         serialize.save_stable_model(
             save_path / "gen_policy",

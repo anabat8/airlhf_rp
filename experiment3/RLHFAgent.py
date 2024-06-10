@@ -1,7 +1,7 @@
 import pathlib
 
 import numpy as np
-import torch as th
+import torch
 from imitation.algorithms import preference_comparisons
 from imitation.policies import serialize
 from imitation.policies.base import NormalizeFeaturesExtractor
@@ -10,7 +10,7 @@ from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-device = th.device("cuda" if th.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class RLHFAgent:
@@ -130,9 +130,9 @@ class RLHFAgent:
     def save(self, save_path: pathlib.Path, learner_rewards):
         save_path.mkdir(parents=True, exist_ok=True)
         # Save the rewards learned
-        th.save(learner_rewards, save_path / "learner_rewards.pt")
+        torch.save(learner_rewards, save_path / "learner_rewards.pt")
         # Save the reward net model
-        th.save(self.pref_comparisons.model, save_path / "reward_net.pt")
+        torch.save(self.pref_comparisons.model, save_path / "reward_net.pt")
         # Save the policy
         serialize.save_stable_model(
             save_path / "gen_policy",

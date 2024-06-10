@@ -1,5 +1,4 @@
 import numpy as np
-import imageio
 import torch
 
 from imitation.rewards.reward_wrapper import RewardVecEnvWrapper
