@@ -11,22 +11,22 @@ import torch as torch
 
 from experiment3.Expert import Expert
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# device = torch.device("cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 
 class AIRLAgent:
 
-    def __init__(self, env_object):
+    def __init__(self, env_object, expert_type, nr_demonstrations=60):
         self.gen_algo = None
         self.reward = BasicShapedRewardNet(
             observation_space=env_object.venv.observation_space,
             action_space=env_object.venv.action_space,
             normalize_input_layer=RunningNorm,
         ).to(device)
-        self.expert = Expert(env_object, "ppo")
+        self.expert = Expert(env_object, "ppo", expert_type)
         self.expert_policy = self.expert.init_expert_policy()
-        self.expert_demonstrations = self.expert.init_rollouts()
+        self.expert_demonstrations = self.expert.init_rollouts(min_episodes=nr_demonstrations)
         self.airl_trainer = None
 
     def init_gen_algo(self, ac_policy, env_object, batch_size=64, ent_coef=0.0, lr=0.0005, gamma=0.95, clip_range=0.1,

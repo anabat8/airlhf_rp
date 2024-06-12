@@ -10,8 +10,8 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 from experiment3.Environment import Environment
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# device = torch.device("cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 
 class Utils:

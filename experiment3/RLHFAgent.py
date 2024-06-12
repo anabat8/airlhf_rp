@@ -5,14 +5,13 @@ import torch
 from imitation.algorithms import preference_comparisons
 from imitation.policies import serialize
 from imitation.policies.base import NormalizeFeaturesExtractor
-from imitation.policies.serialize import load_stable_baselines_model
 from imitation.rewards.reward_nets import BasicRewardNet
 from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# device = torch.device("cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 
 class RLHFAgent:
