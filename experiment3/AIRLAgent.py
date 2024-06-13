@@ -17,7 +17,7 @@ device = torch.device("cpu")
 
 class AIRLAgent:
 
-    def __init__(self, env_object, expert_type, nr_demonstrations=60):
+    def __init__(self, env_object, expert_type, nr_demonstrations=60, random_prob=0, switch_prob=0):
         self.gen_algo = None
         self.reward = BasicShapedRewardNet(
             observation_space=env_object.venv.observation_space,
@@ -25,7 +25,7 @@ class AIRLAgent:
             normalize_input_layer=RunningNorm,
         ).to(device)
         self.expert = Expert(env_object, "ppo", expert_type)
-        self.expert_policy = self.expert.init_expert_policy()
+        self.expert_policy = self.expert.init_expert_policy(random_prob=random_prob, switch_prob=switch_prob)
         self.expert_demonstrations = self.expert.init_rollouts(min_episodes=nr_demonstrations)
         self.airl_trainer = None
 

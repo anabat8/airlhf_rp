@@ -1,7 +1,6 @@
 from imitation.data import rollout
 from imitation.policies.exploration_wrapper import ExplorationWrapper
 from imitation.policies.serialize import load_policy
-from stable_baselines3 import PPO
 
 from experiment3.Environment import Environment
 
@@ -15,29 +14,29 @@ class Expert:
         self.demonstrations = None
         self.expert_type = expert_type
 
-    def init_expert_policy(self):
-        if self.policy_name == "ppo" and self.expert_type == "optimal":
+    def init_expert_policy(self, random_prob, switch_prob):
+        if self.policy_name == "ppo":
             self.expert_policy = load_policy(
                 "ppo-huggingface",
                 organization="HumanCompatibleAI",
                 env_name=self.env.env_id,
                 venv=self.env.venv,
             )
-        elif self.policy_name == "ppo" and self.expert_type == "suboptimal":
-            # Make sure create_suboptimal_policy_ppo has been called before
-            # such that the suboptimal policy was created and can be loaded
-            self.expert_policy = self.load_suboptimal_policy_ppo()
-            # self.expert_policy = ExplorationWrapper(self.expert_policy)
+            if self.expert_type == "suboptimal":
+                self.expert_policy = ExplorationWrapper(
+                    policy=self.expert_policy,
+                    venv=self.env.venv,
+                    random_prob=random_prob,
+                    switch_prob=switch_prob,
+                    rng=self.env.rng,
+                    deterministic_policy=True
+                    # We use a deterministic version of the expert policy when having suboptimal expert,
+                    # to have a clear baseline of optimal behavior before introducing controlled randomness
+                )
+
+        print("Random probability is " + str(random_prob) + " and switch probability is " + str(switch_prob))
+
         return self.expert_policy
-
-    def load_suboptimal_policy_ppo(self):
-        policy = PPO.load("airl_agent/suboptimal_expert/ppo_cartpole")
-        return policy
-
-    def create_suboptimal_policy_ppo(self):
-        model = PPO("MlpPolicy", self.env.venv, verbose=1)
-        model.learn(total_timesteps=25000)  # tuned optimal expert uses 1e5 timesteps (RL ZOO)
-        model.save("airl_agent/suboptimal_expert/ppo_cartpole")
 
     def init_rollouts(self, min_timesteps=None, min_episodes=60):
         self.demonstrations = rollout.rollout(
@@ -48,5 +47,6 @@ class Expert:
         )
 
         print("Expert stats: ", rollout.rollout_stats(self.demonstrations))
+        print("Expert is " + self.expert_type)
 
         return self.demonstrations
