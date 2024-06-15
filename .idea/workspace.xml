@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eebcb910-f6ae-409d-9ea4-a2baea415405" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/plots.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/ppo_irlhf_cartpole_tensorboard_3/run_irlhf_comparisons_1400_demonstrations_1400_with_seed_52_with_suboptimal_expert_0/events.out.tfevents.1718451738.DESKTOP-JSSHDRE.26240.2" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/ppo_irlhf_cartpole_tensorboard_3/run_irlhf_comparisons_1400_demonstrations_1400_with_seed_52_with_suboptimal_expert_0/events.out.tfevents.1718451738.DESKTOP-JSSHDRE.26240.2" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/experiment2/preference_comparisons_train.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2fmK3wKpxxuNLAqmwNedTTml97O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ana/Desktop/Year3/Research Project/research_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ana\PycharmProjects\pythonProject\experiment3" />
+      <recent name="C:\Users\Ana\PycharmProjects\pythonProject" />
+      <recent name="C:\Users\Ana\PycharmProjects\pythonProject\experiment2" />
+      <recent name="C:\Users\Ana\PycharmProjects\pythonProject\ppo" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PY-241.15989.155" />
+        <option value="bundled-python-sdk-babbdf50b680-7c6932dee5e4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.15989.155" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eebcb910-f6ae-409d-9ea4-a2baea415405" name="Changes" comment="" />
+      <created>1714400617266</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714400617266</updated>
+      <workItem from="1716321414404" duration="8868000" />
+      <workItem from="1716385737373" duration="8953000" />
+      <workItem from="1716450510981" duration="6250000" />
+      <workItem from="1716458734375" duration="2411000" />
+      <workItem from="1716544845083" duration="6605000" />
+      <workItem from="1716555984554" duration="5275000" />
+      <workItem from="1716802176391" duration="6500000" />
+      <workItem from="1716808849579" duration="12949000" />
+      <workItem from="1716888581471" duration="11012000" />
+      <workItem from="1716912054770" duration="9212000" />
+      <workItem from="1716922477358" duration="5662000" />
+      <workItem from="1716977929395" duration="9047000" />
+      <workItem from="1716990121169" duration="105000" />
+      <workItem from="1716990238971" duration="5216000" />
+      <workItem from="1717055459124" duration="646000" />
+      <workItem from="1717056118687" duration="389000" />
+      <workItem from="1717056518357" duration="8970000" />
+      <workItem from="1717079782635" duration="736000" />
+      <workItem from="1717080535737" duration="51000" />
+      <workItem from="1717080647706" duration="5183000" />
+      <workItem from="1717241193428" duration="2394000" />
+      <workItem from="1717246534355" duration="4730000" />
+      <workItem from="1717263783808" duration="1880000" />
+      <workItem from="1717323971634" duration="14848000" />
+      <workItem from="1717495194748" duration="8706000" />
+      <workItem from="1717582773981" duration="663000" />
+      <workItem from="1717583580919" duration="13774000" />
+      <workItem from="1717659557437" duration="15531000" />
+      <workItem from="1717711480644" duration="15261000" />
+      <workItem from="1717793529167" duration="7401000" />
+      <workItem from="1718012608325" duration="721000" />
+      <workItem from="1718013473742" duration="1974000" />
+      <workItem from="1718015992087" duration="44389000" />
+      <workItem from="1718185106584" duration="21873000" />
+      <workItem from="1718229557188" duration="4000" />
+      <workItem from="1718245160379" duration="15238000" />
+      <workItem from="1718444184907" duration="8367000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/research_project$main.coverage" NAME="main Coverage Results" MODIFIED="1718206510703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
