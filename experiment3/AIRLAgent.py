@@ -29,19 +29,18 @@ class AIRLAgent:
         self.expert_demonstrations = self.expert.init_rollouts(min_episodes=nr_demonstrations)
         self.airl_trainer = None
 
-    def init_gen_algo(self, ac_policy, env_object, batch_size=64, ent_coef=0.0, lr=0.0005, gamma=0.95, clip_range=0.1,
-                      vf_coef=0.1, n_epochs=5):
+    def init_gen_algo(self, config, ac_policy, env_object):
         if self.expert.policy_name == "ppo":
             self.gen_algo = PPO(
                 env=env_object.venv,
                 policy=ac_policy,
-                batch_size=batch_size,
-                ent_coef=ent_coef,
-                learning_rate=lr,
-                gamma=gamma,
-                clip_range=clip_range,
-                vf_coef=vf_coef,
-                n_epochs=n_epochs,
+                batch_size=config['batch_size'],
+                ent_coef=config['ent_coef'],
+                learning_rate=config['learning_rate'],
+                gamma=config['gamma'],
+                clip_range=config['clip_range'],
+                vf_coef=config['vf_coef'],
+                n_epochs=config['n_epochs'],
                 seed=env_object.seed,
                 device=device
             )

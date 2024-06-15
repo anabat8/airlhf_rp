@@ -17,9 +17,8 @@ device = torch.device("cpu")
 class Utils:
     @staticmethod
     def train_with_learned_reward(learned_reward, save_path, tensorboard_dir, tb_log_name, wandb_project_name,
-                                  wandb_save_path, ac_policy, env_object, policy_kwargs, policy_name="ppo",
-                                  total_timesteps=400_000, lr=0.001, n_steps=32, batch_size=64, n_epochs=20,
-                                  gae_lambda=0.8, gamma=0.98, clip_range=0.2, ent_coef=0.0, vf_coef=0.1):
+                                  wandb_save_path, config, ac_policy, env_object, policy_kwargs,
+                                  total_timesteps=400_000):
 
         # Wrap environment with learned reward
         learned_reward_venv = RewardVecEnvWrapper(env_object.venv, learned_reward.predict_processed)
@@ -27,19 +26,19 @@ class Utils:
         # Train an agent with the learned reward
         learner = None
 
-        if policy_name == "ppo":
+        if config['policy_name'] == "ppo":
             learner = PPO(
                 policy=ac_policy,
                 env=learned_reward_venv,
-                learning_rate=lr,
-                n_steps=n_steps,
-                batch_size=batch_size,
-                n_epochs=n_epochs,
-                gae_lambda=gae_lambda,
-                gamma=gamma,
-                clip_range=clip_range,
-                ent_coef=ent_coef,
-                vf_coef=vf_coef,
+                learning_rate=config['learning_rate'],
+                n_steps=config['n_steps'],
+                batch_size=config['batch_size'],
+                n_epochs=config['n_epochs'],
+                gae_lambda=config['gae_lambda'],
+                gamma=config['gamma'],
+                clip_range=config['clip_range'],
+                ent_coef=config['ent_coef'],
+                vf_coef=config['vf_coef'],
                 seed=env_object.seed,
                 policy_kwargs=policy_kwargs,
                 tensorboard_log=tensorboard_dir,

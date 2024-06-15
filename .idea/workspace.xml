@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eebcb910-f6ae-409d-9ea4-a2baea415405" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/AIRLAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/AIRLAgent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/RLHFAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/RLHFAgent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/Utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/plots.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/ppo_irlhf_cartpole_tensorboard_3/run_irlhf_comparisons_1400_demonstrations_1400_with_seed_52_with_suboptimal_expert_0/events.out.tfevents.1718451738.DESKTOP-JSSHDRE.26240.2" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/ppo_irlhf_cartpole_tensorboard_3/run_irlhf_comparisons_1400_demonstrations_1400_with_seed_52_with_suboptimal_expert_0/events.out.tfevents.1718451738.DESKTOP-JSSHDRE.26240.2" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +125,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/research_project$main.coverage" NAME="main Coverage Results" MODIFIED="1718206510703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

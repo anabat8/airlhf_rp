@@ -37,23 +37,22 @@ class RLHFAgent:
         self.trajectory_generator = None
         self.pref_comparisons = None
 
-    def init_gen_algo(self, policy_name, ac_policy, env_object, lr=0.001, n_steps=32, batch_size=64, n_epochs=20,
-                      gae_lambda=0.8, gamma=0.98, clip_range=0.2, ent_coef=0.0, vf_coef=0.1, path_to_algo=None):
+    def init_gen_algo(self, config, ac_policy, env_object, path_to_algo=None):
         if path_to_algo is not None:
             self.gen_algo = PPO.load(env=env_object.venv, path=path_to_algo)
-        elif policy_name == "ppo":
+        elif config['policy_name'] == "ppo":
             self.gen_algo = PPO(
                 policy=ac_policy,
                 env=env_object.venv,
-                learning_rate=lr,
-                n_steps=n_steps,
-                batch_size=batch_size,
-                n_epochs=n_epochs,
-                gae_lambda=gae_lambda,
-                gamma=gamma,
-                clip_range=clip_range,
-                ent_coef=ent_coef,
-                vf_coef=vf_coef,
+                learning_rate=config['learning_rate'],
+                n_steps=config['n_steps'],
+                batch_size=config['batch_size'],
+                n_epochs=config['n_epochs'],
+                gae_lambda=config['gae_lambda'],
+                gamma=config['gamma'],
+                clip_range=config['clip_range'],
+                ent_coef=config['ent_coef'],
+                vf_coef=config['vf_coef'],
                 seed=env_object.seed,
                 policy_kwargs=dict(
                     features_extractor_class=NormalizeFeaturesExtractor,
