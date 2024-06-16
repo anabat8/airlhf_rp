@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="eebcb910-f6ae-409d-9ea4-a2baea415405" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/AIRLAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/AIRLAgent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/RLHFAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/RLHFAgent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiment3/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/Utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/airl_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/airl_agent_trained_with_learned_reward.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/plots.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,6 +121,7 @@
       <workItem from="1718229557188" duration="4000" />
       <workItem from="1718245160379" duration="15238000" />
       <workItem from="1718444184907" duration="8367000" />
+      <workItem from="1718530236114" duration="1039000" />
     </task>
     <servers />
   </component>
