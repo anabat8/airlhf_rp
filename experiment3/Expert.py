@@ -22,6 +22,7 @@ class Expert:
                 env_name=self.env.env_id,
                 venv=self.env.venv,
             )
+            print(self.expert_policy)
             if self.expert_type == "suboptimal":
                 self.expert_policy = ExplorationWrapper(
                     policy=self.expert_policy,
@@ -33,6 +34,7 @@ class Expert:
                     # We use a deterministic version of the expert policy when having suboptimal expert,
                     # to have a clear baseline of optimal behavior before introducing controlled randomness
                 )
+                print("Agent has suboptimal demonstrations")
 
         print("Random probability is " + str(random_prob) + " and switch probability is " + str(switch_prob))
 

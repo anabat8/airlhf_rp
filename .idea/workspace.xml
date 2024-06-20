@@ -6,11 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="eebcb910-f6ae-409d-9ea4-a2baea415405" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/Environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/Environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/Expert.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/Expert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/Utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/airl_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/airl_agent_trained_with_learned_reward.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/learner_rewards.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_net.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/airl_agent/reward_test.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/irlhf_agent_trained_with_learned_reward.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/learner_rewards.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/irlhf_agent/reward_net.pt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment3/plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/plots.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/rlhf_agent/gen_policy/model.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/rlhf_agent/gen_policy/model.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/rlhf_agent/learner_rewards.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/rlhf_agent/learner_rewards.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/rlhf_agent/reward_net.pt" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/rlhf_agent/reward_net.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment3/rlhf_agent/rlhf_agent_trained_with_learned_reward.zip" beforeDir="false" afterPath="$PROJECT_DIR$/experiment3/rlhf_agent/rlhf_agent_trained_with_learned_reward.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +133,18 @@
       <workItem from="1718229557188" duration="4000" />
       <workItem from="1718245160379" duration="15238000" />
       <workItem from="1718444184907" duration="8367000" />
-      <workItem from="1718530236114" duration="1039000" />
+      <workItem from="1718530236114" duration="10301000" />
+      <workItem from="1718559467631" duration="7950000" />
+      <workItem from="1718609983446" duration="19003000" />
+      <workItem from="1718703508223" duration="13941000" />
+      <workItem from="1718718479978" duration="2711000" />
+      <workItem from="1718721914922" duration="10325000" />
+      <workItem from="1718748572900" duration="11386000" />
+      <workItem from="1718801736866" duration="3596000" />
+      <workItem from="1718812095686" duration="91000" />
+      <workItem from="1718812217877" duration="8333000" />
+      <workItem from="1718838700065" duration="7045000" />
+      <workItem from="1718877078028" duration="84000" />
     </task>
     <servers />
   </component>
