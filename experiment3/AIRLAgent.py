@@ -11,8 +11,7 @@ import torch as torch
 
 from experiment3.Expert import Expert
 
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class AIRLAgent:

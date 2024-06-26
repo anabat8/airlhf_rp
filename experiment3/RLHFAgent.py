@@ -10,8 +10,7 @@ from imitation.util.networks import RunningNorm
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
 
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class RLHFAgent:

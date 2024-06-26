@@ -4,21 +4,17 @@ import torch
 from imitation.rewards.reward_wrapper import RewardVecEnvWrapper
 from stable_baselines3 import PPO
 from stable_baselines3.common.evaluation import evaluate_policy
-from stable_baselines3.common.callbacks import EvalCallback, BaseCallback
-# import wandb as wandb
-# from stable_baselines3.common.monitor import Monitor
-# from wandb.integration.sb3 import WandbCallback
+from stable_baselines3.common.callbacks import EvalCallback
 
 from experiment3.Environment import Environment
 
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class Utils:
     @staticmethod
-    def train_with_learned_reward(learned_reward, save_path, tensorboard_dir, tb_log_name, wandb_project_name,
-                                  wandb_save_path, config, ac_policy, env_object: Environment, policy_kwargs,
+    def train_with_learned_reward(learned_reward, save_path, tensorboard_dir, tb_log_name,
+                                  config, ac_policy, env_object: Environment, policy_kwargs,
                                   total_timesteps=400_000):
 
         # Wrap environment with learned reward
@@ -51,30 +47,11 @@ class Utils:
         eval_freq = total_timesteps // 50
         eval_callback = EvalCallback(env_object.venv, eval_freq=max(eval_freq // config['num_envs'], 1))
 
-        # Initialize Wandb
-        # config = {
-        #     "policy_type": ac_policy,
-        #     "total_timesteps": total_timesteps,
-        #     "env_name": "CartPole-v0",
-        # }
-        #
-        # run = wandb.init(
-        #     project=wandb_project_name,
-        #     config=config,
-        #     sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
-        #     monitor_gym=True,  # auto-upload the videos of agents playing the game
-        #     save_code=True,  # optional
-        # )
-
         learner.learn(total_timesteps=total_timesteps, progress_bar=True, tb_log_name=tb_log_name,
                       reset_num_timesteps=False, callback=eval_callback
-                      # callback=WandbCallback(gradient_save_freq=100,
-                      #                        model_save_path=wandb_save_path,
-                      #                        verbose=2)
                       )
 
         learner.save(save_path)
-        # run.finish()
 
     @staticmethod
     def evaluate_trained_agent_with_true_reward(load_path, venv, policy_name="ppo", n_eval_episodes=100):
